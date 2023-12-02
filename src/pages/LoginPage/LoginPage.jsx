@@ -12,9 +12,11 @@ const LoginPage = () => {
         </div>
         <div className='w-full flex flex-col items-center justify-center gap-6'>
             <h4>Nie masz konta?</h4>
-            <button className='w-full rounded-md text-center text-white  bg-[#303030] p-2 max-w-[350px]'>
-                <Link to='/rejestracja'>Zarejestruj się</Link>
-            </button>
+            <Link to='/rejestracja' className='max-w-[350px] w-full'>
+              <button className='w-full rounded-md text-center text-white  bg-[#303030] p-2'>
+                  Zarejestruj się
+              </button>
+            </Link>
         </div>
         </div>
     </div>

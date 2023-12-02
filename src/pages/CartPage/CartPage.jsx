@@ -1,7 +1,4 @@
 import React from 'react'
-import { IoTrashOutline } from "react-icons/io5";
-import { Link } from 'react-router-dom';
-
 import Cart from '../../components/Cart';
 import Summary from './Summary';
 
