@@ -9,7 +9,7 @@ import Blog from './Blog'
 
 const HomePage = () => {
   return (
-    <div className={`flex flex-col w-full gap-[40px] bg-[url("public/background.png")] bg-cover	`}>
+    <div className={`flex flex-col w-full gap-[40px] bg-[url("/background.png")] bg-cover	`}>
       <Header />
       <AboutFounder />
       <Specialists />
