@@ -97,7 +97,7 @@ const Form = () => {
                     </div>
                     <div className='flex flex-col font-ms'>
                         <div className='flex justify-between'>
-                        <label htmlFor="rulesCheckbox" className='max-w-[300px]'>*Akceptuję <a href='/regulamin' className='underline'> Regulamin</a> oraz <a href='/polityka-prywatnosci' className='underline'>Politykę Prywatności</a> </label>
+                        <label htmlFor="rulesCheckbox" className='max-w-[300px]'>*Akceptuję <Link to='/regulamin' className='underline'> Regulamin</Link> oraz <Link to='/polityka-prywatnosci' className='underline'>Politykę Prywatności</Link> </label>
                         <input
                             id="rulesCheckbox" 
                             name="rulesCheckbox" 
