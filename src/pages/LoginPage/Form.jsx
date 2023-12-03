@@ -32,7 +32,7 @@ const Form = () => {
                         onChange={handleChange}
                         error={touched.login && Boolean(errors.login)}
                         helpertext={touched.login && errors.login}
-                        className='py-2 px-3 rounded-lg border border-slate-300'
+                        className='py-2 px-3 rounded-lg border border-[#404040]'
                     />
                     {touched.login && Boolean(errors.login) && (
                         <p className='text-red-500'>{errors.login}</p>
@@ -50,7 +50,7 @@ const Form = () => {
                             value={values.password}
                             error={touched.password && Boolean(errors.password)}
                             helpertext={touched.password && errors.password}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                         />
                         {touched.password && Boolean(errors.password) && (
                         <p className='text-red-500'>{errors.password}</p>

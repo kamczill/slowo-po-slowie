@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { IoChevronForward } from "react-icons/io5";
 
 const BlogCard = ({blogImg, title, excerpt, url}) => {
@@ -9,7 +10,7 @@ const BlogCard = ({blogImg, title, excerpt, url}) => {
             </div>
             <h2 className='font-semibold text-3xl text-center'>{title}</h2>
             <p className='text-center font-semibold'>{excerpt}</p>
-            <a className='uppercase font-semibold text-lg inline-flex items-center justify-center gap-2' href={url}>czytaj dalej <IoChevronForward className='text-2xl' /> </a>
+            <Link className='uppercase font-semibold text-lg inline-flex items-center justify-center gap-2' to={url}>czytaj dalej <IoChevronForward className='text-2xl' /> </Link>
         </article>
     )
 }

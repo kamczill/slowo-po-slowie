@@ -34,7 +34,7 @@ const Form = () => {
                         onChange={handleChange}
                         error={(touched.firstName && Boolean(errors.firstName))?.toString()}
                         helpertext={touched.firstName && errors.firstName || undefined}
-                        className='py-2 px-3 rounded-lg border border-slate-300'
+                        className='py-2 px-3 rounded-lg border border-[#404040]'
                     />
                      {touched.firstName && Boolean(errors.firstName) && (
                         <p className='text-red-500'>{errors.firstName}</p>
@@ -53,7 +53,7 @@ const Form = () => {
                         onChange={handleChange}
                         error={(touched.lastName && Boolean(errors.lastName))?.toString()}
                         helpertext={touched.lastName && errors.lastName  || undefined}
-                        className='py-2 px-3 rounded-lg border border-slate-300'
+                        className='py-2 px-3 rounded-lg border border-[#404040]'
                     />
                      {touched.lastName && Boolean(errors.lastName) && (
                         <p className='text-red-500'>{errors.lastName}</p>
@@ -72,7 +72,7 @@ const Form = () => {
                             onChange={handleChange}
                             error={touched.email && Boolean(errors.email)}
                             helpertext={touched.email && errors.email}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                         />
                         {touched.email && Boolean(errors.email) && (
                             <p className='text-red-500'>{errors.email}</p>
@@ -91,7 +91,7 @@ const Form = () => {
                             onChange={handleChange}
                             error={touched.telephone && Boolean(errors.telephone)}
                             helpertext={touched.telephone && errors.telephone}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                         />
                         {touched.telephone && Boolean(errors.telephone) && (
                             <p className='text-red-500'>{errors.telephone}</p>
@@ -110,7 +110,7 @@ const Form = () => {
                             onChange={handleChange}
                             error={touched.message && Boolean(errors.message)}
                             helpertext={touched.message && errors.message}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                             placeholder='Twoja wiadomość'
                         />
                         {touched.message && Boolean(errors.message) && (

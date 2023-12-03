@@ -6,7 +6,7 @@ const ReviewCard = ({starsNumber}) => {
     <div className='min-h-[156px] bg-white w-full max-w-[305px] rounded-2xl p-4'>
         <div className='flex gap-2'>
             {[...Array(starsNumber)].map((_, i) => (
-                <IoStar className='text-[#F9C2A5] text-2xl' />
+                <IoStar key={i} className='text-[#F9C2A5] text-2xl' />
             ))}
         </div>
     </div>

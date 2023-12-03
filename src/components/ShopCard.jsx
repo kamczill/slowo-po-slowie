@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ShopCard = ({img, title, excerpt, price, id=1, lastItem}) => {
     return(
-        <div className={`border-b pb-12 border-black flex flex-col md:flex-row gap-8 ${lastItem && 'border-none'} shrink-0 grow-1`}>
+        <div className={`border-b pb-12 border-black flex flex-col md:flex-row gap-12 ${lastItem && 'border-none'} shrink-0 grow-1`}>
             <div className='w-full max-h-[300px] max-w-[200px] shrink-0 mx-auto'>
                 <img src={img} className='w-full h-full'/>
             </div>

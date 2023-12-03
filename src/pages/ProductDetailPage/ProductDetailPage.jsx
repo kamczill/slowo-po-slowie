@@ -10,7 +10,7 @@ const ProductDetailPage = () => {
     }
   return (
     <div className='bg-[#F6F6F6] min-h-[50vh] w-full flex flex-col items-center '>
-        <div className='p-5 flex flex-col items-center justify-center font-ms gap-10 max-w-[1160px]'>
+        <div className='p-5 pt-8 flex flex-col items-center justify-center font-ms gap-10 max-w-[1160px]'>
             <div className={`flex flex-col gap-5 lg:flex-row`}>
                 <div className='max-w-[400px]'>
                     <img src={placeholder} alt={''}/>

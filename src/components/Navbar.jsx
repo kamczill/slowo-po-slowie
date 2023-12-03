@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from './../assets/logo.png'
 import { IoCartOutline, IoMenu, IoClose } from "react-icons/io5";
 import CartFeature from './CartFeature';
 import LoginButton from './LoginButton';
 import NavLinks from './NavLinks';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpenMobileNav, setIsOpenMobileNav] = useState(false)
     const [isOpenCart, setIsOpenCart] = useState(false)
+    let location = useLocation();
 
     const handleToggleMobileNav = () => {
         if(isOpenCart) setIsOpenCart(false)
@@ -19,6 +20,10 @@ const Navbar = () => {
         if(isOpenMobileNav) setIsOpenMobileNav(false)
         setIsOpenCart(!isOpenCart)
     }
+
+    useEffect(() => {
+        if(window.innerWidth < 900) setIsOpenMobileNav(false)
+    }, [location])
 
   return (
     <div className='flex justify-center w-full'>

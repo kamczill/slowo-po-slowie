@@ -34,7 +34,7 @@ const Form = () => {
                             onChange={handleChange}
                             error={(touched.login && Boolean(errors.login))?.toString()}
                             helpertext={touched.login && errors.login || undefined}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                         />
                         {touched.login && Boolean(errors.login) && (
                             <p className='text-red-500'>{errors.login}</p>
@@ -53,7 +53,7 @@ const Form = () => {
                         onChange={handleChange}
                         error={(touched.firstName && Boolean(errors.firstName))?.toString()}
                         helpertext={touched.firstName && errors.firstName || undefined}
-                        className='py-2 px-3 rounded-lg border border-slate-300'
+                        className='py-2 px-3 rounded-lg border border-[#404040]'
                     />
                      {touched.firstName && Boolean(errors.firstName) && (
                         <p className='text-red-500'>{errors.firstName}</p>
@@ -72,7 +72,7 @@ const Form = () => {
                         onChange={handleChange}
                         error={(touched.lastName && Boolean(errors.lastName))?.toString()}
                         helpertext={touched.lastName && errors.lastName  || undefined}
-                        className='py-2 px-3 rounded-lg border border-slate-300'
+                        className='py-2 px-3 rounded-lg border border-[#404040]'
                     />
                      {touched.lastName && Boolean(errors.lastName) && (
                         <p className='text-red-500'>{errors.lastName}</p>
@@ -89,7 +89,7 @@ const Form = () => {
                             value={values.password}
                             error={(touched.password && Boolean(errors.password))?.toString()}
                             helpertext={touched.password && errors.password || undefined}
-                            className='py-2 px-3 rounded-lg border border-slate-300'
+                            className='py-2 px-3 rounded-lg border border-[#404040]'
                         />
                          {touched.password && Boolean(errors.password) && (
                         <p className='text-red-500'>{errors.password}</p>
@@ -107,7 +107,7 @@ const Form = () => {
                             checked={values.rulesCheckbox}
                             error={(touched.rulesCheckbox && Boolean(errors.rulesCheckbox))?.toString()}
                             helpertext={touched.rulesCheckbox && errors.rulesCheckbox || undefined}
-                            className='w-[20px] border border-slate-300'
+                            className='w-[20px] border border-[#404040]'
                         />
                         </div>
                          {touched.rulesCheckbox && Boolean(errors.rulesCheckbox) && (

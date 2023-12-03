@@ -27,6 +27,7 @@ export const router = createBrowserRouter([
           { path: '/koszyk', element: <CartPage /> },
           { path: '/kontakt', element: <ContactPage /> },
           { path: '/sklep', element: <ShopPage /> },
+          { path: '/sklep/:category', element: <ShopPage /> },
           { path: '/sklep/produkty/:id', element: <ProductDetailPage /> },
         //   { path: 'about', element: <AboutPage /> },
           // more nested routes here
