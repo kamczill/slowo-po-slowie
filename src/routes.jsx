@@ -11,6 +11,8 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
 import ShopPage from './pages/ShopPage/ShopPage';
 import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
+import RulesPage from './pages/RulesPage/RulesPage';
+import PrivatePolicyPage from './pages/PrivatePolicyPage/PrivatePolicyPage';
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +31,9 @@ export const router = createBrowserRouter([
           { path: '/sklep', element: <ShopPage /> },
           { path: '/sklep/:category', element: <ShopPage /> },
           { path: '/sklep/produkty/:id', element: <ProductDetailPage /> },
+          { path: '/sklep/produkty/:id', element: <ProductDetailPage /> },
+          { path: '/regulamin', element: <RulesPage /> },
+          { path: '/polityka-prywatnosci', element: <PrivatePolicyPage /> },
         //   { path: 'about', element: <AboutPage /> },
           // more nested routes here
         ],
