@@ -1,6 +1,7 @@
 import React from 'react'
 import headerImg from './../assets/header.png'
 import { IoArrowForward } from "react-icons/io5";
+import CustomLink from './CustomLink'
 
 const Header = () => {
   return (
@@ -11,10 +12,10 @@ const Header = () => {
                 <h2 className='text-white font-semibold text-3xl max-w-[240px] text-center lg:text-4xl'>Z nami</h2>
                 <h2 className='text-white font-semibold text-3xl max-w-[240px] text-center lg:text-4xl'>do poprawnej mowy!</h2>
 
-                <button className='flex items-center gap-1 text-white text-xl mt-4'>
+                <CustomLink className='flex items-center gap-1 text-white text-xl mt-4' to='sklep/szkolenia'>
                     Nasze szkolenia 
                     <IoArrowForward />
-                </button>
+                </CustomLink>
             </div>
         </div>
     </header>
