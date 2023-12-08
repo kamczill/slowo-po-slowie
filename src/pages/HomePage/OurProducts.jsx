@@ -13,17 +13,17 @@ const OurProducts = () => {
                 <ProductCardWithButton
                     productImg={cards}
                     title='Karty do nauki'
-                    url='#'
+                    url='sklep/karty'
                 />
                 <ProductCardWithButton
                     productImg={course}
                     title='Szkolenia'
-                    url='#'
+                    url='sklep/szkolenia'
                 />
                 <ProductCardWithButton
                     productImg={ebooks}
                     title='E-booki'
-                    url='#'
+                    url='sklep/e-booki'
                 />
             </div>
         </div>

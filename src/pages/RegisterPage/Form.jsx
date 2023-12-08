@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { Link } from 'react-router-dom'
 import { registerInitialValues, registerValidationSchema } from './validation'
+import CustomLink from '../../components/CustomLink'
 
 const Form = () => {
 
@@ -97,7 +97,7 @@ const Form = () => {
                     </div>
                     <div className='flex flex-col font-ms'>
                         <div className='flex justify-between'>
-                        <label htmlFor="rulesCheckbox" className='max-w-[300px]'>*Akceptuję <Link to='/regulamin' className='underline'> Regulamin</Link> oraz <Link to='/polityka-prywatnosci' className='underline'>Politykę Prywatności</Link> </label>
+                        <label htmlFor="rulesCheckbox" className='max-w-[300px]'>*Akceptuję <CustomLink to='/regulamin' className='underline'> Regulamin</CustomLink> oraz <CustomLink to='/polityka-prywatnosci' className='underline'>Politykę Prywatności</CustomLink> </label>
                         <input
                             id="rulesCheckbox" 
                             name="rulesCheckbox" 
@@ -116,7 +116,7 @@ const Form = () => {
                     </div>
                     <div>
                     <button type="submit" className='w-full rounded-md text-center text-white  bg-[#303030] p-2 max-w-[350px]'>
-                        <Link to='/rejestracja'>Zarejestruj się</Link>
+                        <CustomLink to='/rejestracja'>Zarejestruj się</CustomLink>
                     </button>
                     </div>
                 </form>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const PrivatePolicyPage = () => {
   return (
-    <div>PrivatePolicyPage</div>
+    <div className='h-[60vh]'>PrivatePolicyPage</div>
   )
 }
 

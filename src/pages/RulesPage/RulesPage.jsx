@@ -2,7 +2,7 @@ import React from 'react'
 
 const RulesPage = () => {
   return (
-    <div>RulesPage</div>
+    <div className='h-[60vh]'>RulesPage</div>
   )
 }
 

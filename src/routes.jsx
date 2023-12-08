@@ -13,6 +13,7 @@ import ShopPage from './pages/ShopPage/ShopPage';
 import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
 import RulesPage from './pages/RulesPage/RulesPage';
 import PrivatePolicyPage from './pages/PrivatePolicyPage/PrivatePolicyPage';
+import CookiePolicyPage from './pages/CookiePolicyPage/CookiePolicyPage';
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
           { path: '/sklep/produkty/:id', element: <ProductDetailPage /> },
           { path: '/regulamin', element: <RulesPage /> },
           { path: '/polityka-prywatnosci', element: <PrivatePolicyPage /> },
+          { path: '/polityka-plikow-cookie', element: <CookiePolicyPage /> },
         //   { path: 'about', element: <AboutPage /> },
           // more nested routes here
         ],

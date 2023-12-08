@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import CustomLink from '../../components/CustomLink'
 
 const Summary = ({subtotalPrice, totalPrice}) => {
     return(
@@ -22,7 +22,7 @@ const Summary = ({subtotalPrice, totalPrice}) => {
           </div>
         </div>
         <button type="submit" className='w-full mt-12 rounded-md text-center text-white  bg-[#303030] p-3 max-w-[350px]'>
-          <Link to=''>Przejdź do kasy</Link>
+          <CustomLink to=''>Przejdź do kasy</CustomLink>
         </button>
       </div>
     )

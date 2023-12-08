@@ -4,7 +4,8 @@ import { IoCartOutline, IoMenu, IoClose } from "react-icons/io5";
 import CartFeature from './CartFeature';
 import LoginButton from './LoginButton';
 import NavLinks from './NavLinks';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import CustomLink from './CustomLink';
 
 const Navbar = () => {
     const [isOpenMobileNav, setIsOpenMobileNav] = useState(false)
@@ -29,7 +30,7 @@ const Navbar = () => {
     <div className='flex justify-center w-full'>
         <div className='flex justify-between items-center px-6 py-6 relative w-full max-w-[1400px] md:p-8'>
             <div className='w-1/3 max-w-[170px]  lg:max-w-[192px]'>
-                <Link to='/'><img src={logo} className='w-full'/></Link>
+                <CustomLink to='/'><img src={logo} className='w-full'/></CustomLink>
             </div>
             <div className='hidden md:block'>
                 <nav className='flex items-center gap-4 text-xl'>

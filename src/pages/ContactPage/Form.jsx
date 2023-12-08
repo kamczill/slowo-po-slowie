@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { Link } from 'react-router-dom'
 import { registerInitialValues, registerValidationSchema } from './validation'
+import CustomLink from '../../components/CustomLink'
 
 const Form = () => {
 
@@ -119,7 +119,7 @@ const Form = () => {
                     </div>
                     <div>
                     <button type="submit" className='w-full rounded-md text-center text-white  bg-[#303030] p-2 max-w-[350px]'>
-                        <Link to='/rejestracja'>Wyślij</Link>
+                        <CustomLink to='/rejestracja'>Wyślij</CustomLink>
                     </button>
                     </div>
                 </form>
