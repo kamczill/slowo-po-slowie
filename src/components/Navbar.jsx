@@ -56,7 +56,7 @@ const Navbar = () => {
             </div>
 
             {/* mobile menu */}
-            <div className={`${isOpenMobileNav ? '': 'hidden'} absolute z-10 w-screen left-0 bottom-[-370px] bg-white px-6 py-6 md:hidden`}>
+            <div className={`${isOpenMobileNav ? '': 'hidden'} absolute z-10 w-screen left-0 bottom-[-420px] bg-white px-6 py-6 md:hidden`}>
                 <nav className='flex flex-col text-2xl gap-6 items-center'>
                     <NavLinks />
                     <LoginButton />

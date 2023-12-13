@@ -14,6 +14,10 @@ import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
 import RulesPage from './pages/RulesPage/RulesPage';
 import PrivatePolicyPage from './pages/PrivatePolicyPage/PrivatePolicyPage';
 import CookiePolicyPage from './pages/CookiePolicyPage/CookiePolicyPage';
+import VisitsPage from './pages/VisitsPage/VisitsPage';
+import HistoryVisitsPage from './pages/HistoryVisitsPage/HistoryVisitsPage';
+import NewVisitPage from './pages/NewVisitPage/NewVisitPage';
+import VisitDetailsPage from './pages/VisitDetailsPage/VisitDetailsPage';
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +31,11 @@ export const router = createBrowserRouter([
           { path: '/login', element: <LoginPage /> },
           { path: '/rejestracja', element: <RegisterPage /> },
           { path: '/przypomnienie-hasla', element: <ForgetPasswordPage /> },
+          { path: '/wizyty', element: <VisitsPage /> },
+          { path: '/wizyty/nowa', element: <NewVisitPage /> },
+          { path: '/wizyty/zarezerwowane', element: <VisitsPage /> },
+          { path: '/wizyty/historia', element: <HistoryVisitsPage /> },
+          { path: '/wizyty/historia/:id', element: <VisitDetailsPage /> },
           { path: '/koszyk', element: <CartPage /> },
           { path: '/kontakt', element: <ContactPage /> },
           { path: '/sklep', element: <ShopPage /> },
