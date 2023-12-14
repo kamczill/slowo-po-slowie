@@ -1,15 +1,16 @@
-import React from 'react'
-import Header from '../../components/Header'
-import AboutFounder from './AboutFounder'
-import Specialists from './Specialists'
-import Reviews from './Reviews'
-import OurProducts from './OurProducts'
-import Blog from './Blog'
-
+import React from "react";
+import Header from "../../components/Header";
+import AboutFounder from "./AboutFounder";
+import Specialists from "./Specialists";
+import Reviews from "./Reviews";
+import OurProducts from "./OurProducts";
+import Blog from "./Blog";
 
 const HomePage = () => {
   return (
-    <div className={`flex flex-col w-full gap-[40px] bg-[url("/background.png")] bg-cover	`}>
+    <div
+      className={`flex w-full flex-col gap-[40px] bg-[url("/background.png")] bg-cover	`}
+    >
       <Header />
       <AboutFounder />
       <Specialists />
@@ -17,7 +18,7 @@ const HomePage = () => {
       <OurProducts />
       <Blog />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

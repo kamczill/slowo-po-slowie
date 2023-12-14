@@ -1,25 +1,35 @@
-import React from 'react'
-import headerImg from './../assets/header.png'
+import React from "react";
+import headerImg from "./../assets/header.png";
 import { IoArrowForward } from "react-icons/io5";
-import CustomLink from './CustomLink'
+import CustomLink from "./CustomLink";
 
 const Header = () => {
   return (
     <header>
-        <div className='relative'>
-            <img src={headerImg} className='w-full h-[50vh] object-cover object-left'/>
-            <div className='right-0 absolute bottom-1 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center md:left-[250px] md:bottom-0'>
-                <h2 className='text-white font-semibold text-3xl max-w-[240px] text-center lg:text-4xl'>Z nami</h2>
-                <h2 className='text-white font-semibold text-3xl max-w-[240px] text-center lg:text-4xl'>do poprawnej mowy!</h2>
+      <div className="relative">
+        <img
+          src={headerImg}
+          className="h-[50vh] w-full object-cover object-left"
+        />
+        <div className="absolute bottom-1 left-1/2 right-0 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center md:bottom-0 md:left-[250px]">
+          <h2 className="max-w-[240px] text-center text-3xl font-semibold text-white lg:text-4xl">
+            Z nami
+          </h2>
+          <h2 className="max-w-[240px] text-center text-3xl font-semibold text-white lg:text-4xl">
+            do poprawnej mowy!
+          </h2>
 
-                <CustomLink className='flex items-center gap-1 text-white text-xl mt-4' to='sklep/szkolenia'>
-                    Nasze szkolenia 
-                    <IoArrowForward />
-                </CustomLink>
-            </div>
+          <CustomLink
+            className="mt-4 flex items-center gap-1 text-xl text-white"
+            to="sklep/szkolenia"
+          >
+            Nasze szkolenia
+            <IoArrowForward />
+          </CustomLink>
         </div>
+      </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

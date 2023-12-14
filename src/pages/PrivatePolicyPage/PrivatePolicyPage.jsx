@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PrivatePolicyPage = () => {
-  return (
-    <div className='h-[60vh]'>PrivatePolicyPage</div>
-  )
-}
+  return <div className="h-[60vh]">PrivatePolicyPage</div>;
+};
 
-export default PrivatePolicyPage
+export default PrivatePolicyPage;
