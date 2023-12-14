@@ -46,7 +46,7 @@ const Form = () => {
       </div>
 
       <button
-        type="submit"
+        // type="submit"
         className="focus:shadow-outline w-full rounded bg-[#303030] px-4 py-3 font-bold text-white hover:bg-gray-700 focus:outline-none"
       >
         Zarejestruj się!

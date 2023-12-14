@@ -5,7 +5,7 @@ import BlogCard from "../../components/BlogCard";
 const Blog = () => {
   return (
     <div className="flex items-center justify-center">
-      <div className="flex w-full max-w-[1200px] flex-col rounded-xl bg-[#F6F6F6] py-6">
+      <div className="mb-8 flex w-full max-w-[1200px] flex-col rounded-xl bg-[#F6F6F6] py-6">
         <h2 className="text-center text-3xl font-semibold">Blog</h2>
         <div className="mb-8 mt-8 flex flex-col items-center gap-12 md:flex-row md:justify-between md:px-12">
           <BlogCard

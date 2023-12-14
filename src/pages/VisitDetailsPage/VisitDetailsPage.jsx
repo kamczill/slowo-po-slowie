@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 const VisitDetailsPage = () => {
   const { id } = useParams();
-  const [isDetailsOpen, setIsDetailsOpen] = useState(true);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const handleToggleDetails = () => setIsDetailsOpen(!isDetailsOpen);
 
@@ -29,7 +29,7 @@ const VisitDetailsPage = () => {
             <div className="flex flex-col gap-2 text-lg">
               <div className="mb-4 flex flex-col gap-2">
                 <h3 className="text-xl font-bold">lek. Laura Molińska</h3>
-                <h3 className="text-xl font-bold">Logopeda</h3>
+                <h3 className="text-lg font-semibold">logopeda</h3>
               </div>
               <InfoItem
                 icon={<IoLocationOutline className="text-2xl" />}
