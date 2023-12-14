@@ -13,7 +13,9 @@ Before you begin, ensure you have met the following requirements:
 To install project, follow these steps:
 
 1. Clone the repository
+
 2.Navigate to the project directory
+
 3. Install dependencies with npm: npm install
 
 ## Using
