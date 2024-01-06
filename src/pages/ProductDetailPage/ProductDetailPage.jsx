@@ -1,29 +1,54 @@
-import React, { useState } from "react";
-import placeholder from "./../../assets/blog-placeholder.png";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { products } from "../../data/products";
 
 const ProductDetailPage = () => {
   const [isOpenDesc, setIsOpenDesc] = useState(false);
+  const [isProductInCart, setIsProductInCart] = useState()
+  const { id } = useParams();
+  const currentProduct = products.find(product => product.id === id)
 
   const handleToggleDesc = () => {
     setIsOpenDesc(!isOpenDesc);
   };
+
+  const checkIfItemIsInCart = () =>  {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    return Boolean(cart.find(item => item.id === currentProduct?.id))
+  }
+
+  const addItemToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    const isItemInCart = Boolean(cart.find(item => item.id === currentProduct?.id))
+    console.log(isItemInCart)
+    const item = {
+      id: currentProduct?.id,
+      quantity: 1
+    }
+    const updatedCart = [...cart, item];
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setIsProductInCart(true);
+  };
+
+  useEffect(() => {
+    setIsProductInCart(checkIfItemIsInCart())
+  }, [])
+  
+
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] ">
       <div className="font-ms flex max-w-[1160px] flex-col items-center justify-center gap-10 p-5 py-8">
         <div className={`flex flex-col gap-5 lg:flex-row`}>
           <div className="max-w-[400px]">
-            <img src={placeholder} alt={""} />
+            <img src={currentProduct?.coverImg} alt={currentProduct?.title} />
           </div>
           <div className="flex max-w-[400px] flex-col gap-4 lg:max-w-[700px] lg:p-5">
             <h3 className="pointer text-xl font-bold lg:hover:underline lg:hover:decoration-2">
-              Karty do gry “Słowo po słowie”
+              {currentProduct?.title}
             </h3>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type an
+              {currentProduct?.excerpt}
             </p>
             <button
               onClick={handleToggleDesc}
@@ -35,65 +60,16 @@ const ProductDetailPage = () => {
             <p className="text-xl font-bold">100.00 zł</p>
             <button
               type="submit"
-              className="w-full rounded-md bg-[#303030] p-2 py-3  text-center text-white md:max-w-[350px]"
+              className={`w-full rounded-md ${isProductInCart ? 'bg-[#3030307a]': 'bg-[#303030]'} p-2 py-3  text-center text-white md:max-w-[350px]`}
+              onClick={addItemToCart}
+              disabled={isProductInCart}
             >
-              Dodaj do koszyka
+              {isProductInCart ? 'Produkt jest w koszyku!': 'Dodaj do koszyka'}
             </button>
           </div>
         </div>
         {isOpenDesc && (
-          <div className="flex flex-col gap-4">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-              vestibulum non purus in ultricies. Fusce venenatis eros metus, a
-              rhoncus enim lacinia vitae. Nulla facilisi. Praesent fringilla
-              magna non elit fringilla tempor. Curabitur pharetra urna eu
-              pretium gravida. Etiam posuere velit magna, eget porta nulla
-              pretium dignissim. Etiam arcu eros, condimentum eu orci ac, tempus
-              blandit odio. Suspendisse nec faucibus velit, id faucibus quam.
-              Curabitur tempor vestibulum quam pretium dignissim. Nunc blandit,
-              diam quis aliquam volutpat, arcu elit suscipit massa, in tempor
-              sapien odio id tellus. Donec tristique tempus augue sit amet
-              tempor. Maecenas pharetra neque urna, quis iaculis metus cursus
-              eu. Morbi quis felis a elit ultricies elementum pharetra sit amet
-              elit.
-            </p>
-            <p>
-              Class aptent taciti sociosqu ad litora torquent per conubia
-              nostra, per inceptos himenaeos. Nam luctus eleifend turpis, vitae
-              elementum ipsum mollis sit amet. Integer a libero vitae ligula
-              congue mattis et sed ipsum. Donec sodales sem et purus fringilla,
-              ac laoreet orci facilisis. Nunc a hendrerit turpis. Suspendisse
-              potenti. Nunc pulvinar dui non pharetra euismod. Mauris congue,
-              elit sed porta mattis, eros est aliquam nisi, eget mattis nulla
-              dui quis sapien. Praesent nec placerat ipsum. Aenean turpis arcu,
-              tempus sit amet odio at, aliquam gravida justo. Nulla ultrices
-              massa in ultrices rhoncus. Sed scelerisque quam malesuada
-              tristique consectetur. Nullam eleifend leo at dui tincidunt,
-              scelerisque gravida erat tincidunt. Sed venenatis scelerisque leo,
-              pharetra hendrerit eros hendrerit vitae. Morbi semper consequat
-              lorem, ac scelerisque est semper at.
-            </p>
-            <p>
-              Aenean eget leo leo. Pellentesque fringilla consectetur sapien,
-              vitae efficitur nunc faucibus id. Donec et libero quis mi
-              efficitur imperdiet sed nec lorem. Quisque dignissim sed risus sit
-              amet fringilla. Mauris gravida, risus in rutrum convallis, orci
-              mauris ultrices sapien, nec semper metus turpis sed ligula. Ut
-              tempor lorem ut rhoncus commodo. Duis lacinia tortor ut accumsan
-              fringilla. Phasellus tempus quam eu facilisis maximus. Nam egestas
-              magna velit, quis malesuada ex euismod vel. Proin erat lorem,
-              efficitur ut maximus non, viverra vel libero. Pellentesque
-              egestas, sem aliquam feugiat varius, quam purus posuere justo, eu
-              pretium mauris nunc ut magna. Aliquam a arcu dolor.
-            </p>
-            <p>
-              Duis sagittis dictum nulla eu blandit. Donec elementum gravida
-              augue sed molestie. Integer consectetur quam consequat risus
-              rutrum, ac pretium justo varius. Duis maximus imperdiet mi id
-              scelerisque.
-            </p>
-          </div>
+          <div className="flex flex-col gap-4" dangerouslySetInnerHTML={{ __html: currentProduct?.description}} />
         )}
       </div>
     </div>

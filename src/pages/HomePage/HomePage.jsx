@@ -5,17 +5,20 @@ import Specialists from "./Specialists";
 import Reviews from "./Reviews";
 import OurProducts from "./OurProducts";
 import Blog from "./Blog";
+import ProductBanners from "./ProductBanners";
+import InstaBanner from "./InstaBanner";
+import AboutUs from "./AboutUs";
 
 const HomePage = () => {
   return (
     <div
-      className={`flex w-full flex-col gap-[40px] bg-[url("/background.png")] bg-cover	`}
+      className={`flex w-full flex-col gap-[40px] bg-[#F6F6F6] bg-cover	`}
     >
       <Header />
-      <AboutFounder />
-      <Specialists />
+      <ProductBanners />
       <Reviews />
-      <OurProducts />
+      <InstaBanner />
+      <AboutUs />
       <Blog />
     </div>
   );

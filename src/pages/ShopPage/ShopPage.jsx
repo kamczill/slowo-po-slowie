@@ -5,8 +5,12 @@ import placeholder from "./../../assets/blog-placeholder.png";
 import ShopCard from "../../components/ShopCard";
 import ShopNav from "../../components/ShopNav";
 
+import { products } from "../../data/products";
+
 const ShopPage = () => {
   const { category } = useParams();
+  const currentCategoryProducts = category ? products.filter(product => product.category === category) : products
+
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] ">
       <div className="flex w-full max-w-[1400px] flex-col gap-8 px-6 py-8 md:flex-row md:px-8 lg:px-14 ">
@@ -17,31 +21,19 @@ const ShopPage = () => {
             {category ? category : "Wszystkie produkty"}
           </h2>
           <main className="mt-12 flex flex-col gap-10 text-lg">
-            <ShopCard
-              img={placeholder}
-              title="Karty do gry “Słowo po słowie”"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type an"
-              price="100.00"
-            />
-            <ShopCard
-              img={placeholder}
-              title="Karty do gry “Słowo po słowie”"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type an"
-              price="100.00"
-            />
-            <ShopCard
-              img={placeholder}
-              title="Karty do gry “Słowo po słowie”"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type an"
-              price="100.00"
-            />
-            <ShopCard
-              img={placeholder}
-              title="Karty do gry “Słowo po słowie”"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type an"
-              price="100.00"
-              lastItem
-            />
+            {currentCategoryProducts ? (
+              currentCategoryProducts.map(product => (
+                <ShopCard
+                  key={product.id} 
+                  id={product.id}
+                  img={product.coverImg}
+                  title={product.title}
+                  excerpt={product.excerpt}
+                  price={product.price}
+                />
+              ))
+              ): ''
+            }
           </main>
         </div>
       </div>

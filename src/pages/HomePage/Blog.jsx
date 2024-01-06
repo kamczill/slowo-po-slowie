@@ -1,40 +1,24 @@
 import React from "react";
-import blogImg from "./../../assets/blog.png";
+import blogImg1 from "./../../assets/blog-img1.png";
+import blogImg2 from "./../../assets/blog-img2.png";
+import blogImg3 from "./../../assets/blog-img3.png";
 import BlogCard from "../../components/BlogCard";
+import {articlesData} from './../../data/articles'
 
 const Blog = () => {
   return (
     <div className="flex items-center justify-center">
-      <div className="mb-8 flex w-full max-w-[1200px] flex-col rounded-xl bg-[#F6F6F6] py-6">
-        <h2 className="text-center text-3xl font-semibold">Blog</h2>
-        <div className="mb-8 mt-8 flex flex-col items-center gap-12 md:flex-row md:justify-between md:px-12">
-          <BlogCard
-            blogImg={blogImg}
-            title="Tekst 1"
-            excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type 
-                    specimen book. It"
-            url="/aktualnosci/1"
+      <div className="mb-8 flex w-full max-w-[1200px] flex-col rounded-xl bg-white py-6">
+        <h2 className="text-center text-3xl font-semibold">Aktualności</h2>
+        <div className="mb-8 mt-8 flex flex-col items-center gap-12 md:flex-row md:gap-4 md:justify-between md:items-start md:px-12">
+          {articlesData.map((article) => 
+          <BlogCard 
+            key={article.id}
+            blogImg={article.coverImg}
+            title={article.title}
+            url={`/aktualnosci/${article.id}`}
           />
-          <BlogCard
-            blogImg={blogImg}
-            title="Tekst 2"
-            excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type 
-                    specimen book. It"
-            url="/aktualnosci/2"
-          />
-          <BlogCard
-            blogImg={blogImg}
-            title="Tekst 3"
-            excerpt="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type 
-                    specimen book. It"
-            url="/aktualnosci/1"
-          />
+          )}
         </div>
       </div>
     </div>

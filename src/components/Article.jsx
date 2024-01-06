@@ -12,7 +12,7 @@ const Article = ({ blogImg, title, excerpt, url, lastArticle }) => {
         <h2 className="text-center text-3xl font-bold md:text-start">
           {title}
         </h2>
-        <p className="text-center leading-6 md:text-start">{excerpt}</p>
+        <div className="text-center leading-6 md:text-start" dangerouslySetInnerHTML={{__html: excerpt}} />
         <CustomLink
           className="inline-flex items-center justify-center gap-2 text-lg uppercase md:justify-start"
           to={url}
