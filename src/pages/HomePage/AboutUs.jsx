@@ -24,7 +24,7 @@ const AboutUs = () => {
                     </p>
                     <CustomLink
                         className="inline-flex items-center justify-center gap-2 text-lg uppercase md:justify-start"
-                        to=''
+                        to='o-nas'
                     >
                         czytaj dalej <IoChevronForward className="text-2xl" />{" "}
                     </CustomLink>
