@@ -5,7 +5,6 @@ import { articlesData } from "../../data/articles";
 const NewsDetailPage = () => {
   const {id} = useParams();
   const article = articlesData.find(article => article.id === id)
-  console.log(article)
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] ">
       <div className="my-8 flex w-full max-w-[1400px] flex-col items-start gap-8 bg-white px-6 py-8 md:flex-row md:px-8 lg:px-14">
