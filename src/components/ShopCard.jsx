@@ -2,7 +2,13 @@ import React from "react";
 import { IoBagOutline } from "react-icons/io5";
 import CustomLink from "./CustomLink";
 
-const ShopCard = ({ img, title, excerpt, price, id = 1, lastItem }) => {
+const ShopCard = ({ img, title, excerpt, price, id, lastItem, addToCart, checkIfItemIsInCart, product }) => {
+  const isInCart = checkIfItemIsInCart(product)
+
+  const handleAddToCart = () => {
+    addToCart(product)
+  }
+
   return (
     <div
       className={`flex flex-col gap-12 border-b border-black pb-12 md:flex-row ${
@@ -19,8 +25,8 @@ const ShopCard = ({ img, title, excerpt, price, id = 1, lastItem }) => {
         <p className="text-justify">{excerpt}</p>
         <div className="flex gap-6 text-xl">
           <span>{price} zł</span>
-          <button className="px-4">
-            <IoBagOutline className="text-2xl" />
+          <button className="px-4" onClick={handleAddToCart} disabled={isInCart}>
+            <IoBagOutline className={`text-2xl ${isInCart ? 'text-gray-400': 'text-black'}`} />
           </button>
         </div>
       </div>

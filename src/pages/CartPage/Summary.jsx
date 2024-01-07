@@ -1,7 +1,21 @@
 import React from "react";
 import CustomLink from "../../components/CustomLink";
 
-const Summary = ({ subtotalPrice, totalPrice }) => {
+const Summary = ({productsInCart, cart}) => {
+
+  let subtotalPrice = 0
+  let totalPrice = 0
+
+  const sumProductPrice = () => {
+    productsInCart.forEach(cartProduct => {
+      const quantity = cart.find(product => product.id === cartProduct.id).quantity
+      totalPrice += cartProduct.price * parseInt(quantity)
+    })
+    subtotalPrice = totalPrice
+  }
+  
+  sumProductPrice()
+
   return (
     <div className="flex h-full w-full max-w-[560px] flex-col justify-between gap-4 bg-white p-6 md:min-h-[470px] md:max-w-[370px]">
       <div>

@@ -6,11 +6,14 @@ import LoginButton from "./LoginButton";
 import NavLinks from "./NavLinks";
 import { useLocation } from "react-router-dom";
 import CustomLink from "./CustomLink";
+import { useCart } from "../contexts/cartContext";
 
 const Navbar = () => {
   const [isOpenMobileNav, setIsOpenMobileNav] = useState(false);
   const [isOpenCart, setIsOpenCart] = useState(false);
   let location = useLocation();
+  const { cart } = useCart()
+  let cartItemsLenght = cart.length
 
   const handleToggleMobileNav = () => {
     if (isOpenCart) setIsOpenCart(false);
@@ -46,7 +49,7 @@ const Navbar = () => {
           <div className="relative" onClick={handleToggleCart}>
             <IoCartOutline className="text-4xl" />
             <div className="absolute right-[-8px] top-[-4px] flex h-[22px] w-[22px] items-center justify-center rounded-full bg-red-500 text-white">
-              1
+              {cartItemsLenght}
             </div>
           </div>
           <div className="relative md:hidden" onClick={handleToggleMobileNav}>
@@ -71,7 +74,7 @@ const Navbar = () => {
         </div>
 
         {/* cart */}
-        {isOpenCart && <CartFeature onClick={handleToggleCart} />}
+        {isOpenCart && <CartFeature isOpen={isOpenCart} onClick={handleToggleCart} />}
       </div>
     </div>
   );

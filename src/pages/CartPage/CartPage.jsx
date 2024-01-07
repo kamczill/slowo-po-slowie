@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Cart from "../../components/Cart";
 import Summary from "./Summary";
-import { products } from "../../data/products";
+import { useCart } from "../../contexts/cartContext";
 
 const CartPage = () => {
-  const cart = JSON.parse(localStorage.getItem('cart'))
+  const { cart, products } = useCart()
   const productsInCart = products.filter(product => cart.find(cartProd => cartProd.id === product.id))
   
   return (
@@ -12,7 +12,7 @@ const CartPage = () => {
       <div className=" flex w-full max-w-[1400px]  flex-col items-center gap-4 px-6 py-8 md:px-8 lg:px-14">
         <div className="flex w-full flex-col items-center justify-between gap-6 md:flex-row md:items-start">
           <Cart products={productsInCart} cart={cart}/>
-          <Summary subtotalPrice="200.00" totalPrice="400.00" />
+          <Summary productsInCart={productsInCart} cart={cart} />
         </div>
       </div>
     </div>

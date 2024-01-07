@@ -1,22 +1,57 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import CustomLink from "./CustomLink";
-const CartFeature = ({ onClick }) => {
+import { useCart } from "../contexts/cartContext";
+import CartProductFeature from "./CartProductFeature";
+
+const CartFeature = ({ onClick, isOpen }) => {
+  const { cart, products } = useCart()
+  const productsInCart = products.filter(product => cart.find(cartProd => cartProd.id === product.id))
+  const containerRef = useRef()
+
+  let subtotalPrice = 0
+  let totalPrice = 0
+
+  const sumProductPrice = () => {
+    productsInCart.forEach(cartProduct => {
+      const quantity = cart.find(product => product.id === cartProduct.id).quantity
+      totalPrice += cartProduct.price * parseInt(quantity)
+    })
+    subtotalPrice = totalPrice
+  }
+  
+  sumProductPrice()
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target) && isOpen) {
+        onClick();
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [containerRef]);
+
+
   return (
-    <div className="fixed right-0 top-20 z-10 flex min-h-[400px] w-screen max-w-[500px] flex-col justify-between gap-5 border bg-white p-6 shadow-2xl sm:right-20 sm:top-[90px] md:absolute md:right-6 md:top-[100px]">
+    <div className="fixed right-0 top-20 z-10 flex min-h-[400px] w-screen max-w-[500px] flex-col justify-between gap-5 border bg-white p-6 shadow-2xl sm:right-20 sm:top-[90px] md:absolute md:right-6 md:top-[100px]" ref={containerRef}>
       <div>
         <h2 className="border-b-2 border-black pb-3 text-xl font-semibold">
           Mój koszyk
         </h2>
         <div>
-          <div className="flex justify-between border-b-2 border-black py-3">
-            <h3>Karty do gry "Słowo po Słowie"</h3>
-            <span>50zł</span>
-          </div>
+            {productsInCart.length > 0 ? (
+              productsInCart.map(product => 
+              <CartProductFeature product={product} cart={cart} />
+            )) : <p className="text-center mt-4">Koszyk jest pusty</p>
+          }
         </div>
       </div>
       <div className="flex flex-col items-start gap-2">
         <p>
-          Razem: <span>100,00 zł</span>
+          Razem: <span>{totalPrice} zł</span>
         </p>
         <CustomLink
           to="/koszyk"

@@ -1,14 +1,13 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import placeholder from "./../../assets/blog-placeholder.png";
+import { useParams } from "react-router-dom";
 
 import ShopCard from "../../components/ShopCard";
 import ShopNav from "../../components/ShopNav";
-
-import { products } from "../../data/products";
+import { useCart } from "../../contexts/cartContext";
 
 const ShopPage = () => {
   const { category } = useParams();
+  const { products, addToCart, checkIfItemIsInCart } = useCart()
   const currentCategoryProducts = category ? products.filter(product => product.category === category) : products
 
   return (
@@ -30,6 +29,9 @@ const ShopPage = () => {
                   title={product.title}
                   excerpt={product.excerpt}
                   price={product.price}
+                  product={product}
+                  addToCart={addToCart}
+                  checkIfItemIsInCart={checkIfItemIsInCart}
                 />
               ))
               ): ''

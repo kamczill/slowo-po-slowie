@@ -2,39 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { products } from "../../data/products";
+import { useCart } from "../../contexts/cartContext";
 
 const ProductDetailPage = () => {
   const [isOpenDesc, setIsOpenDesc] = useState(false);
-  const [isProductInCart, setIsProductInCart] = useState()
   const { id } = useParams();
   const currentProduct = products.find(product => product.id === id)
+  const { addToCart, checkIfItemIsInCart } = useCart()
+  const [isProductInCart, setIsProductInCart] = useState(checkIfItemIsInCart(currentProduct))
 
   const handleToggleDesc = () => {
     setIsOpenDesc(!isOpenDesc);
   };
 
-  const checkIfItemIsInCart = () =>  {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    return Boolean(cart.find(item => item.id === currentProduct?.id))
+  const handleAddItemToCart = () => {
+    addToCart(currentProduct)
+    setIsProductInCart(true)
   }
-
-  const addItemToCart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    const isItemInCart = Boolean(cart.find(item => item.id === currentProduct?.id))
-    console.log(isItemInCart)
-    const item = {
-      id: currentProduct?.id,
-      quantity: 1
-    }
-    const updatedCart = [...cart, item];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setIsProductInCart(true);
-  };
-
-  useEffect(() => {
-    setIsProductInCart(checkIfItemIsInCart())
-  }, [])
-  
 
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] ">
@@ -61,7 +45,7 @@ const ProductDetailPage = () => {
             <button
               type="submit"
               className={`w-full rounded-md ${isProductInCart ? 'bg-[#3030307a]': 'bg-[#303030]'} p-2 py-3  text-center text-white md:max-w-[350px]`}
-              onClick={addItemToCart}
+              onClick={handleAddItemToCart}
               disabled={isProductInCart}
             >
               {isProductInCart ? 'Produkt jest w koszyku!': 'Dodaj do koszyka'}
