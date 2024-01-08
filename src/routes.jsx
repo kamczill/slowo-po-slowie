@@ -18,6 +18,10 @@ import VisitsPage from "./pages/VisitsPage/VisitsPage";
 import HistoryVisitsPage from "./pages/HistoryVisitsPage/HistoryVisitsPage";
 import NewVisitPage from "./pages/NewVisitPage/NewVisitPage";
 import VisitDetailsPage from "./pages/VisitDetailsPage/VisitDetailsPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import UserInformation from "./pages/ProfilePage/UserInformation";
+import Orders from "./pages/ProfilePage/Orders";
+import OrderDetails from "./pages/ProfilePage/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +34,14 @@ export const router = createBrowserRouter([
       { path: "/o-nas", element: <AboutUsPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/rejestracja", element: <RegisterPage /> },
+      { path: "/profil", 
+        element: <ProfilePage />, 
+        children: [
+        { path: "informacje", element: <UserInformation /> },
+        { path: "zamowienia", element: <Orders /> },
+        { path: "zamowienia/:id", element: <OrderDetails /> },
+        ] 
+      },
       { path: "/przypomnienie-hasla", element: <ForgetPasswordPage /> },
       { path: "/wizyty", element: <VisitsPage /> },
       { path: "/wizyty/nowa", element: <NewVisitPage /> },
