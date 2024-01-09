@@ -37,6 +37,7 @@ export const router = createBrowserRouter([
       { path: "/profil", 
         element: <ProfilePage />, 
         children: [
+        { path: "", element: <UserInformation /> },
         { path: "informacje", element: <UserInformation /> },
         { path: "zamowienia", element: <Orders /> },
         { path: "zamowienia/:id", element: <OrderDetails /> },
