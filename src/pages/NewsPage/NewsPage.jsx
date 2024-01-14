@@ -1,5 +1,4 @@
 import React from "react";
-import blogImg from "./../../assets/blog.png";
 import Article from "../../components/Article";
 import { articlesData } from "../../data/articles";
 const NewsPage = () => {

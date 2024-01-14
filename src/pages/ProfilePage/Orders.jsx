@@ -12,22 +12,6 @@ const Orders = () => {
         <OrderCard />
         <OrderCard />
         <OrderCard />
-        {/* {currentCategoryProducts ? (
-          currentCategoryProducts.map(product => (
-            <ShopCard
-              key={product.id} 
-              id={product.id}
-              img={product.coverImg}
-              title={product.title}
-              excerpt={product.excerpt}
-              price={product.price}
-              product={product}
-              addToCart={addToCart}
-              checkIfItemIsInCart={checkIfItemIsInCart}
-            />
-          ))
-          ): ''
-        } */}
       </main>
     </div>
   )

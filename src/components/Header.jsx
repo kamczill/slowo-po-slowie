@@ -1,6 +1,5 @@
 import React from "react";
 import headerImg from "./../assets/header.png";
-import { IoArrowForward } from "react-icons/io5";
 import CustomLink from "./CustomLink";
 
 const Header = () => {

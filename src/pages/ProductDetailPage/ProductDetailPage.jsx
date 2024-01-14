@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { products } from "../../data/products";

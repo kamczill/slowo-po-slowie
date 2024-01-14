@@ -1,9 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import placeholder from "./../../assets/blog-placeholder.png";
 import { articlesData } from "../../data/articles";
+
 const NewsDetailPage = () => {
-  const {id} = useParams();
+
+  const { id } = useParams();
   const article = articlesData.find(article => article.id === id)
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] ">

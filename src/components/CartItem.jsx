@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useCart } from "../contexts/cartContext";
 
 const CartItem = ({ cartProduct, cart, products, updateItemQuantity, removeItemFromCart }) => {
   const currentProduct = products.find(product => product.id === cartProduct.id)

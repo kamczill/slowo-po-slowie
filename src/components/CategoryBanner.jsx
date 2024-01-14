@@ -1,5 +1,6 @@
 import React from 'react'
 import CustomLink from './CustomLink'
+
 const CategoryBanner = ({title, img, alt, to}) => {
   return (
     <div className='bg-white w-full px-12 py-12 flex flex-col gap-6 justify-center items-center'>

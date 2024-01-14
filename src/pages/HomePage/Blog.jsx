@@ -1,7 +1,4 @@
 import React from "react";
-import blogImg1 from "./../../assets/blog-img1.png";
-import blogImg2 from "./../../assets/blog-img2.png";
-import blogImg3 from "./../../assets/blog-img3.png";
 import BlogCard from "../../components/BlogCard";
 import {articlesData} from './../../data/articles'
 

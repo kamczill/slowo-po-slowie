@@ -22,9 +22,6 @@ const ProfileNav = () => {
             >
                 Moje zamówienia
             </NavLink>
-        {/* <CustomLink to="/sklep/karty">Karty do gry</CustomLink>
-        <CustomLink to="/sklep/szkolenia">Szkolenia</CustomLink>
-        <CustomLink to="/sklep/e-booki">E-booki</CustomLink> */}
         </nav>
     </div>
     )
