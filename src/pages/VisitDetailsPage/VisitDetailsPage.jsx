@@ -10,10 +10,28 @@ import InfoItem from "../../components/InfoItem";
 import mapImg from "./../../assets/map.png";
 
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
+import { useQuery } from "react-query";
+import customAxios from "../../axios/axios";
+import { formatDate } from "../../utils/formatDate";
 
 const VisitDetailsPage = () => {
   const { id } = useParams();
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [details, setDetails] = useState(null);
+  const { user } = useAuth()
+
+  const getVisits = async () => {
+    const res = await customAxios(`users/${user?.id}/future-appointments`)
+    console.log(res)
+    const visitId = parseInt(id)
+    const foundVisit = res.data.find(el => el.id === visitId)
+    console.log(foundVisit)
+    setDetails({...foundVisit})
+    return res.data
+  }
+  const query = useQuery('visits', getVisits, { enabled: !!user?.id})
+
 
   const handleToggleDetails = () => setIsDetailsOpen(!isDetailsOpen);
 
@@ -28,7 +46,7 @@ const VisitDetailsPage = () => {
             <div className="h-[200px] w-[200px] shrink-0 bg-[#6D4646]"></div>
             <div className="flex flex-col gap-2 text-lg">
               <div className="mb-4 flex flex-col gap-2">
-                <h3 className="text-xl font-bold">lek. Laura Molińska</h3>
+                <h3 className="text-xl font-bold">lek. {details?.specialist.name}</h3>
                 <h3 className="text-lg font-semibold">logopeda</h3>
               </div>
               <InfoItem
@@ -45,7 +63,7 @@ const VisitDetailsPage = () => {
               />
               <InfoItem
                 icon={<IoCalendarClearOutline className="text-2xl" />}
-                text="12 stycznia 2024 godz. 16:00"
+                text={formatDate(details?.date)}
               />
               <InfoItem
                 icon={<IoHeartOutline className="text-2xl" />}

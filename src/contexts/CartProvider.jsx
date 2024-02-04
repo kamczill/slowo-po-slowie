@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   const checkIfItemIsInCart = (item) =>  Boolean(cart.find(cartItem => cartItem.id === item.id))
 
   return (
-    <CartContext.Provider value={{ cart, checkIfItemIsInCart, addToCart, updateItemQuantity, removeItemFromCart, products }}>
+    <CartContext.Provider value={{ cart, setCart, checkIfItemIsInCart, addToCart, updateItemQuantity, removeItemFromCart, products }}>
       {children}
     </CartContext.Provider>
   );

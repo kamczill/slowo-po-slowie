@@ -7,10 +7,13 @@ import NavLinks from "./NavLinks";
 import { useLocation } from "react-router-dom";
 import CustomLink from "./CustomLink";
 import { useCart } from "../contexts/cartContext";
+import { useAuth } from "../contexts/authContext";
+import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
   const [isOpenMobileNav, setIsOpenMobileNav] = useState(false);
   const [isOpenCart, setIsOpenCart] = useState(false);
+  const { user } = useAuth()
   let location = useLocation();
   const { cart } = useCart()
   let cartItemsLenght = cart.length
@@ -43,7 +46,7 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="hidden md:block">
-          <LoginButton />
+        { user ? <LogoutButton />: <LoginButton />}
         </div>
         <div className="relative flex items-center gap-6">
           <div className="relative" onClick={handleToggleCart}>
@@ -69,7 +72,7 @@ const Navbar = () => {
         >
           <nav className="flex flex-col items-center gap-6 text-2xl">
             <NavLinks />
-            <LoginButton />
+            { user ? <LogoutButton />: <LoginButton />}
           </nav>
         </div>
 

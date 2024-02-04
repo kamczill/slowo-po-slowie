@@ -2,6 +2,7 @@ import React from 'react'
 import CategoryBanner from '../../components/CategoryBanner'
 import graImg from '../../assets/gra-logopedyczna.png'
 import ebookImg from '../../assets/e-book-mow.png'
+
 const ProductBanners = () => {
   return (
     <div className="flex items-center justify-center">

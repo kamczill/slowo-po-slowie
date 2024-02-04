@@ -2,9 +2,59 @@ import React from "react";
 import { Formik } from "formik";
 import { registerInitialValues, registerValidationSchema } from "./validation";
 import CustomLink from "../../components/CustomLink";
+import { useMutation } from 'react-query';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import customAxios from "../../axios/axios";
+
+
+const registerUser = async (credentials) => {
+  const response = await customAxios.post('register', {
+    ...credentials
+  }, {
+    headers:{
+      "Accept": "application/json",
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+    withCredentials: true
+  })
+  return response.data;
+}
 
 const Form = () => {
-  const handleSubmit = async (values) => {};
+  const navigate = useNavigate()
+  const mutation = useMutation(registerUser, {
+    onSuccess: (data, variables, context) => {
+   
+      toast.success('Konto założono pomyślnie! Możesz się zalogować', {
+        position: "bottom-center",
+        });
+      navigate('/login')
+      console.log(data)
+    }
+  });
+
+
+  const handleSubmit = async (values) => {
+    const credentials = {
+      email: values.login,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      role: 'user',
+      password: values.password
+    }
+
+    mutation.mutate(credentials);
+  };
+
+  const displayErrors = () => {
+    if(mutation.isError) {
+      const errors = mutation.error.response.data.detail
+      const mappedErrors = errors.map(det => <p>{det.msg}</p>)
+      return mappedErrors
+    } 
+  }
 
   return (
     <>
@@ -148,12 +198,15 @@ const Form = () => {
                   type="submit"
                   className="w-full max-w-[350px] rounded-md bg-[#303030]  p-2 text-center text-white"
                 >
-                  <CustomLink to="/rejestracja">Zarejestruj się</CustomLink>
+                  Zarejestruj się
                 </button>
               </div>
             </form>
           )}
         </Formik>
+        <div className="pt-6 text-red-500">
+          {displayErrors()}
+        </div>
       </div>
     </>
   );

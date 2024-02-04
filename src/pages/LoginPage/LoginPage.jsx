@@ -1,8 +1,14 @@
 import React from "react";
 import Form from "./Form";
 import CustomLink from "../../components/CustomLink";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
+  const { user } = useAuth()
+  if (user) navigate('/profil')
+  
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center bg-[#F6F6F6] md:min-h-[80vh]">
       <div className="my-8 flex w-full max-w-[1400px] flex-col items-center gap-6 bg-white px-6 py-8 md:px-8 lg:px-14">

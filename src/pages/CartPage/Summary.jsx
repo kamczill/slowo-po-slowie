@@ -1,8 +1,13 @@
 import React from "react";
-import CustomLink from "../../components/CustomLink";
+import customAxios from '../../axios/axios'
+import { useAuth } from './../../contexts/authContext'
+import { toast } from "react-toastify";
+import { useCart } from "../../contexts/cartContext";
 
 const Summary = ({productsInCart, cart}) => {
-
+  const { user } = useAuth()
+  const { setCart, cart: cartLS } = useCart()
+  const buttonDisabled = JSON.parse(localStorage.getItem('cart')).length == 0 
   let subtotalPrice = 0
   let totalPrice = 0
 
@@ -13,7 +18,40 @@ const Summary = ({productsInCart, cart}) => {
     })
     subtotalPrice = totalPrice
   }
+  const submitOrder = async () => {
+    const cartLength = JSON.parse(localStorage.getItem('cart')).length;
+    if (cartLength > 0 && user) {
+      const addToCartPromises = cartLS.map(item => {
+        return customAxios.post(`add-to-cart/${user.id}?product_id=${item.id}&quantity=${item.quantity}`);
+      });
   
+      try {
+        const addToCartResults = await Promise.all(addToCartPromises);
+        console.log("All items added to cart successfully:", addToCartResults);
+
+        const finalQueryResult = await customAxios.post(`place-order/${user.id}`, {
+          "delivery_method": "string",
+          "address": "string",
+          "city": "string",
+          "zip_code": "string",
+          "recipient_name": "string"
+        });
+        console.log("Final query succeeded:", finalQueryResult);
+        toast.success('Twoje zamówienie zostało złożone!', {
+          position: "bottom-center",
+        });
+        localStorage.setItem('cart', '[]')
+        setCart([])
+        
+      } catch (error) {
+        console.error("An error occurred:", error);
+        toast.error(`${error}`, {
+          position: "bottom-center",
+          });
+      }
+    }
+  }
+
   sumProductPrice()
 
   return (
@@ -39,10 +77,11 @@ const Summary = ({productsInCart, cart}) => {
         </div>
       </div>
       <button
-        type="submit"
+        onClick={submitOrder}
+        disabled={buttonDisabled}
         className="mt-12 w-full max-w-[350px] rounded-md bg-[#303030]  p-3 text-center text-white"
       >
-        <CustomLink to="">Przejdź do kasy</CustomLink>
+        Złóż zamówienie
       </button>
     </div>
   );

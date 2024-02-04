@@ -1,6 +1,7 @@
 import React from "react";
 import Article from "../../components/Article";
 import { articlesData } from "../../data/articles";
+
 const NewsPage = () => {
   return (
     <div className="flex min-h-[50vh] w-full flex-col items-center justify-center bg-[#F6F6F6]">

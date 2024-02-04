@@ -5,7 +5,7 @@ import szkolenieImg from '../assets/products/szkolenie.png'
 
 export const products = [
     {
-        id: 'karty-slowo-po-slowie',
+        id: '16',
         category: 'karty',
         title: 'Karty do gry "Słowo po słowie"',
         coverImg: slowoPoSlowieImg,
@@ -27,7 +27,7 @@ export const products = [
         price: 100.00
     },
     {
-        id: 'karty-gloska-r',
+        id: '17',
         category: 'karty',
         title: 'Karty do gry "Głoska R"',
         coverImg: gloskaRImg,
@@ -58,7 +58,7 @@ export const products = [
         price: 100.00
     },
     {
-        id: 'e-book-mowa-w-akcji',
+        id: '19',
         category: 'e-booki',
         title: 'E-book "Mowa w akcji"',
         coverImg: mowaWAkcjiImg,
@@ -80,7 +80,7 @@ export const products = [
         price: 100.00
     },
     {
-        id: 'szkolenie-logopedyczne',
+        id: '20',
         category: 'szkolenia',
         title: 'Szkolenie logopedyczne',
         coverImg: szkolenieImg,
@@ -99,6 +99,6 @@ export const products = [
         Rozpocznijcie wspólną podróż z edukacją poprzez zabawę. Otwórz e-book i cieszcie się każdym krokiem w stronę pełnego umiejętności komunikatywnych rozwoju Twojego dziecka!
         </p>
         `,
-        price: 100.00
+        price: 200.00
     }
 ]

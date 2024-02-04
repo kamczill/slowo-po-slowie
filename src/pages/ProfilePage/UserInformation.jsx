@@ -1,9 +1,50 @@
 import React from 'react'
 import { Formik } from "formik";
-import { initialValues } from './validation';
 import CustomLink from '../../components/CustomLink';
+import { validationSchema, initialValues } from './validation';
+import { useMutation } from 'react-query';
+import { toast } from "react-toastify";
+import customAxios from '../../axios/axios';
+import { useAuth } from '../../contexts/authContext';
 
 const UserInformation = () => {
+  const { user } = useAuth()
+
+  const updateUser = async (credentials) => {
+    const response = await customAxios.put(`update-user/${user?.id}`, {
+      ...credentials
+    }, {
+      headers:{
+        "Accept": "application/json",
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      withCredentials: true
+    })
+    return response.data;
+  }
+
+  const mutation = useMutation(updateUser, {
+    onSuccess: () => {
+      toast.success('Dane zaaktualizowane pomyślnie!', {
+        position: "bottom-center",
+        });
+    }
+  });
+
+
+  const handleSubmit = async (values) => {
+    const credentials = {};
+
+    for (const [key, value] of Object.entries(values)) {
+      if (value.length > 0) {
+        credentials[key] = value;
+      }
+    }
+
+    mutation.mutate(credentials);
+  };
+
   return (
     <div className="w-full bg-white p-6 md:px-14">
       <h2 className="text-left text-3xl font-semibold">
@@ -12,8 +53,8 @@ const UserInformation = () => {
       <div className="flex w-full flex-col items-center justify-center mt-8">
         <Formik
           initialValues={initialValues}
-          // validationSchema={registerValidationSchema}
-          // onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
         >
           {({
             handleSubmit,

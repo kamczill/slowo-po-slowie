@@ -21,7 +21,8 @@ import VisitDetailsPage from "./pages/VisitDetailsPage/VisitDetailsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import UserInformation from "./pages/ProfilePage/UserInformation";
 import Orders from "./pages/ProfilePage/Orders";
-import OrderDetails from "./pages/ProfilePage/OrderDetails";
+import { RequireAuth } from "./components/RequireAuth";
+import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
 
 export const router = createBrowserRouter([
   {
@@ -35,20 +36,20 @@ export const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/rejestracja", element: <RegisterPage /> },
       { path: "/profil", 
-        element: <ProfilePage />, 
+        element: (<RequireAuth><ProfilePage /></RequireAuth>), 
         children: [
         { path: "", element: <UserInformation /> },
         { path: "informacje", element: <UserInformation /> },
         { path: "zamowienia", element: <Orders /> },
-        { path: "zamowienia/:id", element: <OrderDetails /> },
         ] 
       },
       { path: "/przypomnienie-hasla", element: <ForgetPasswordPage /> },
-      { path: "/wizyty", element: <VisitsPage /> },
-      { path: "/wizyty/nowa", element: <NewVisitPage /> },
-      { path: "/wizyty/zarezerwowane", element: <VisitsPage /> },
-      { path: "/wizyty/historia", element: <HistoryVisitsPage /> },
-      { path: "/wizyty/historia/:id", element: <VisitDetailsPage /> },
+      { path: "/reset-hasla", element: <ResetPasswordPage /> },
+      { path: "/wizyty", element: (<RequireAuth><VisitsPage /></RequireAuth>) },
+      { path: "/wizyty/nowa", element: (<RequireAuth><NewVisitPage /></RequireAuth>) },
+      { path: "/wizyty/zarezerwowane", element: (<RequireAuth><VisitsPage /></RequireAuth>) },
+      { path: "/wizyty/historia", element: (<RequireAuth><HistoryVisitsPage /></RequireAuth>) },
+      { path: "/wizyty/historia/:id", element: (<RequireAuth><VisitDetailsPage /></RequireAuth>) },
       { path: "/koszyk", element: <CartPage /> },
       { path: "/kontakt", element: <ContactPage /> },
       { path: "/sklep", element: <ShopPage /> },

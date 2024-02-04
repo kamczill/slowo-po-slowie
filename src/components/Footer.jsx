@@ -37,10 +37,10 @@ const Footer = () => {
 
         {/* Account  */}
         <section className="flex w-full max-w-[300px] flex-col gap-4 md:max-w-fit">
-          <h3 className="font-bold">KONTO</h3>
+          <h3 className="font-bold"><CustomLink to='/profil'>KONTO</CustomLink></h3>
           <CustomLink to="/rejestracja">Rejestracja</CustomLink>
           <CustomLink to="/login">Logowanie</CustomLink>
-          <CustomLink>Moje zamówienia</CustomLink>
+          <CustomLink to='/profil/zamowienia'>Moje zamówienia</CustomLink>
         </section>
 
         {/* Shop */}

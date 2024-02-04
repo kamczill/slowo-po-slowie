@@ -1,7 +1,6 @@
 import * as yup from "yup";
 
-// register
-export const registerValidationSchema = yup.object({
+export const contactValidationSchema = yup.object({
   firstName: yup
     .string("Wprowadź imie")
     .required("Imię jest wymagane")
@@ -26,7 +25,7 @@ export const registerValidationSchema = yup.object({
     .required("Wiadomość jest wymagana"),
 });
 
-export const registerInitialValues = {
+export const contactInitialValues = {
   firstName: "",
   lastName: "",
   email: "",

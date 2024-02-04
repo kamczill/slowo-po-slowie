@@ -1,19 +1,18 @@
-import React, { useContext} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { loginInitialValues, loginValidationSchema } from "./validation";
-import axios from "axios";
-import { useMutation } from 'react-query';
-import AuthContext from "../../contexts/authContext";
+import {  useMutation } from 'react-query';
 import { toast } from "react-toastify";
+import customAxios from "../../axios/axios";
 
-const loginUser = async (credentials) => {
-    const response = await axios.post('http://127.0.0.1:8000/token', {
+const changePassword = async (credentials) => {
+    const response = await customAxios.post('change-password', {
       ...credentials
     }, {
       headers:{
         "Accept": "application/json",
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
       withCredentials: true
@@ -24,29 +23,34 @@ const loginUser = async (credentials) => {
 
 const Form = () => {
   const navigate = useNavigate()
-  const mutation = useMutation(loginUser, {
-    onSuccess: (data, variables, context) => {
-      const token = data.access_token
-      const user = data.user
-      login(user, token)
-      toast.success('Jesteś zalogowany!', {
+  const mutation = useMutation(changePassword, {
+    onSuccess: () => {
+      toast.success('Twoje hasło zostało zmienione! Możesz się zalogować', {
         position: "bottom-center",
         });
-      navigate('/')
+      navigate('/login')
     }
   });
-
-  const { login } = useContext(AuthContext)
 
 
   const handleSubmit = async (values) => {
     const credentials = {
-      username: values.login,
-      password: values.password
+      email: values.login,
+      reset_code: values.resetCode,
+      new_password: values.password
     }
 
     mutation.mutate(credentials);
   };
+
+  const displayErrors = () => {
+    if(mutation.isError) {
+      const errorArr = mutation.error.response.data.detail
+      const mappedArr = Array.isArray(errorArr) ? errorArr.map(err => <p>{err.msg}</p>) : <p>{mutation.error.response.data.detail}</p>
+
+      return <div className="text-red-500 pt-6">{mappedArr}</div>
+    }
+  }
 
   return (
     <>
@@ -86,6 +90,22 @@ const Form = () => {
                 )}
               </div>
               <div className="flex flex-col">
+                <label htmlFor="resetCode">Kod resetujący</label>
+                <input
+                  name="resetCode"
+                  type="text"
+                  onBlur={handleBlur}
+                  value={values.resetCode}
+                  onChange={handleChange}
+                  error={touched.resetCode && Boolean(errors.resetCode)}
+                  helpertext={touched.resetCode && errors.resetCode}
+                  className="rounded-lg border border-[#404040] px-3 py-2"
+                />
+                {touched.resetCode && Boolean(errors.resetCode) && (
+                  <p className="text-red-500">{errors.resetCode}</p>
+                )}
+              </div>
+              <div className="flex flex-col">
                 <label htmlFor="password">Hasło </label>
                 <input
                   id="password"
@@ -108,13 +128,13 @@ const Form = () => {
                   type="submit"
                   className="w-full rounded-md bg-[#303030] p-2  text-center text-white"
                 >
-                  Zaloguj się
+                  Zmień hasło
                 </button>
+                {displayErrors()}
               </div>
             </form>
           )}
         </Formik>
-        {mutation.isError && <p className="text-red-500 pt-6">{mutation.error.response.data.detail}</p>}
       </div>
     </>
   );

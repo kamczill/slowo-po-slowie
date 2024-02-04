@@ -1,8 +1,8 @@
 import * as yup from "yup";
-
 // login
 export const loginValidationSchema = yup.object({
   login: yup.string("Wprowadź login").required("Login jest wymagany"),
+  resetCode: yup.string("Wprowadź kod resetujący").required("Kod jest wymagany"),
   password: yup
     .string("Wprowadź hasło")
     .min(8, "Hasło musi mieć co najmniej 8 znaków")
@@ -12,4 +12,5 @@ export const loginValidationSchema = yup.object({
 export const loginInitialValues = {
   login: "",
   password: "",
+  resetCode: "",
 };
