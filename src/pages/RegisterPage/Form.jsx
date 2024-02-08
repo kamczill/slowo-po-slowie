@@ -16,8 +16,7 @@ const registerUser = async (credentials) => {
       "Accept": "application/json",
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-    },
-    withCredentials: true
+    }
   })
   return response.data;
 }
@@ -50,7 +49,8 @@ const Form = () => {
   const displayErrors = () => {
     if(mutation.isError) {
       const errors = mutation.error?.response?.data?.detail
-      const mappedErrors = errors.map(det => <p>{det.msg}</p>)
+      console.log(errors)
+      const mappedErrors = Array.isArray(errors) ?errors?.map(det => <p>{det.msg}</p>) : errors
       return mappedErrors
     } 
   }

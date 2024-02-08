@@ -16,7 +16,7 @@ const loginUser = async (credentials) => {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Access-Control-Allow-Origin': '*',
       },
-      withCredentials: true
+      // withCredentials: true
     })
     return response.data;
 
