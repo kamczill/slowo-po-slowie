@@ -31,7 +31,6 @@ const Form = () => {
         position: "bottom-center",
         });
       navigate('/login')
-      console.log(data)
     }
   });
 
@@ -50,7 +49,7 @@ const Form = () => {
 
   const displayErrors = () => {
     if(mutation.isError) {
-      const errors = mutation.error.response.data.detail
+      const errors = mutation.error?.response?.data?.detail
       const mappedErrors = errors.map(det => <p>{det.msg}</p>)
       return mappedErrors
     } 

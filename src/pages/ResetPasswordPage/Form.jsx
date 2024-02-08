@@ -45,8 +45,8 @@ const Form = () => {
 
   const displayErrors = () => {
     if(mutation.isError) {
-      const errorArr = mutation.error.response.data.detail
-      const mappedArr = Array.isArray(errorArr) ? errorArr.map(err => <p>{err.msg}</p>) : <p>{mutation.error.response.data.detail}</p>
+      const errorArr = mutation.error?.response?.data?.detail
+      const mappedArr = Array.isArray(errorArr) ? errorArr.map(err => <p>{err.msg}</p>) : <p>{mutation.error?.response?.data?.detail}</p>
 
       return <div className="text-red-500 pt-6">{mappedArr}</div>
     }

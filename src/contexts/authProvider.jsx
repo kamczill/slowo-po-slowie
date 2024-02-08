@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
                 try {
                     const userId = localStorage.getItem('userId');
                     const res = await customAxios(`/user/${userId}`)
-                    if(!ignore) setUser(res.data)
+                    if(!ignore) setUser(res?.data)
                     console.log(user)
                 } catch (err) {
                     console.log(err)
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = (userData, token) => {
         localStorage.setItem('token', token);
-        localStorage.setItem('userId', userData.id)
+        localStorage.setItem('userId', userData?.id)
         setUser(userData);
     };
 
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
                 try {
                     const userId = localStorage.getItem('userId');
                     const res = await customAxios(`/user/${userId}`)
-                    setUser(res.data)
+                    setUser(res?.data)
                     console.log(user)
                 } catch (err) {
                     console.log(err)
