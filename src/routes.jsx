@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
       { path: "/wizyty/zarezerwowane", element: (<RequireAuth><VisitsPage /></RequireAuth>) },
       { path: "/wizyty/historia", element: (<RequireAuth><HistoryVisitsPage /></RequireAuth>) },
       { path: "/wizyty/historia/:id", element: (<RequireAuth><VisitDetailsPage /></RequireAuth>) },
-      { path: "/koszyk", element: <CartPage /> },
+      { path: "/koszyk", element: (<RequireAuth><CartPage /></RequireAuth>) },
       { path: "/kontakt", element: <ContactPage /> },
       { path: "/sklep", element: <ShopPage /> },
       { path: "/sklep/:category", element: <ShopPage /> },

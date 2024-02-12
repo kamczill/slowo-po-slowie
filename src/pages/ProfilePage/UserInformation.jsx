@@ -12,7 +12,12 @@ const UserInformation = () => {
 
   const updateUser = async (credentials) => {
     const response = await customAxios.put(`update-user/${user?.id}`, {
-      ...credentials
+      email: credentials.newEmail,
+      confirm_email: credentials.confirmEmail,
+      firstName: credentials.firstName,
+      lastName: credentials.lastName,
+      password: credentials.newPassword,
+      currentPassword: credentials.currentPassword
     }, {
       headers:{
         "Accept": "application/json",

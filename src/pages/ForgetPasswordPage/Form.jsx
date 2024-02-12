@@ -91,7 +91,7 @@ const Form = () => {
             </form>
           )}
         </Formik>
-        {mutation.isError && <p className="text-red-500 pt-6">{mutation.error.response.data.detail}</p>}
+        {mutation.isError && <p className="text-red-500 pt-6">{mutation.error.response?.data?.detail}</p>}
       </div>
     </>
   );
